@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  .volet {
+    width: 50%;
+    height: 100vh;
+    background-color: #f1f1f1;
+    position: absolute;
+    right: 0;
+    transition: right 0.5s ease;
+    z-index: 2;
+  }
+  
+  .volet.ouvert {
+    right: 50%;
+  }
+  
+  .contenu {
+    padding: 20px;
+  }
+  
+  .contenu h1 {
+    margin-top: 0;
+  }
+  
