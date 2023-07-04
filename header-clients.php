@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+$prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,14 +10,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d2de6ecd94.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Le Labomoto</title>
 </head>
 <body>
 
 <div class="parent">
     <div class="div1"> </div>
     <div class="div2"><button class="b1" onclick="openNav()">Catégories</button></div>
-    <div class="div3"><img src="image/labomoto-removebg-preview.png" alt="" width="200px" height="200px"> </div>
+    <div class="div3"><a href="acceuil-clients.php"><img src="image/labomoto-removebg-preview.png" alt="" width="200px" height="200px"></a> </div>
     <div class="div4"> 
 
         <input type="text" class="search-input" placeholder="Rechercher">
@@ -29,33 +32,69 @@
         <button class="panier">
             <i class="fas fa-shopping-cart"></i>
             Panier
-          </button>
+        </button>
           
-          <button class="compte">
+        <button class="compte">
             <i class="fas fa-user"></i>
-            Compte
-          </button>
-    </div>
-  </div>
+            <?php echo $prenom; ?>
+        </button>
 
-  <nav id="nav">
+        <?php 
+            if (isset($_POST['deco'])) {
+            session_unset();
+            session_destroy();
+            header("location: acceuil-connexion.php");
+            exit();
+            }
+        ?>
+        <form method="POST" action="">
+        <button type="submit" name="deco" class="deconnexion">
+            <i class="fa-solid fa-power-off"></i>
+              Deconnexion
+        </button>
+        </form>
+    </div>
+</div>
+
+<nav id="nav">
     <button class="b2" onclick="closeNav()">Retour</button>
-    <a href="#" class="navlink">Casques</a>
-    <a href="#" class="navlink">Blousons</a>
-    <a href="#" class="navlink">Gants</a>
-    <a href="#" class="navlink">Pantalons</a>
-    <a href="#" class="navlink">Combinaisons</a>
-    <a href="#" class="navlink">Bottes</a>
-    <a href="#" class="navlink">Protections</a>
-    <a href="#" class="navlink">Accessoires</a>
+    <a href="casque.php" class="navlink">Casques</a>
+    <a href="blouson.php" class="navlink">Blousons</a>
+    <a href="gant.php" class="navlink">Gants</a>
+    <a href="pantalon.php" class="navlink">Pantalons</a>
+    <a href="combinaison.php" class="navlink">Combinaisons</a>
+    <a href="botte.php" class="navlink">Bottes</a>
+    <a href="protection.php" class="navlink">Protections</a>
+    <a href="accessoire.php" class="navlink">Accessoires</a>
 </nav>
 
-    </body>
-    <script src="test2.js"></script>
-    </html>
+</body>
+<script src="test2.js"></script>
+<script>
+     // Récupérer les références des boutons
+var compteButton = document.querySelector('.panier');
+  
+  // Ajouter un gestionnaire d'événements de clic au bouton "Compte"
+  compteButton.addEventListener('click', function() {
+window.location.href = 'panier.php';
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+});
+
+// Récupérer les références des boutons
+var compteButton = document.querySelector('.compte');
+  
+// Ajouter un gestionnaire d'événements de clic au bouton "Compte"
+compteButton.addEventListener('click', function() {
+window.location.href = 'compte.php';
+
+});
+ 
+</script>
+</html>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 *{
     margin: 0;
@@ -92,7 +131,7 @@ nav{
 
 .navlink{
     text-decoration: none;
-    font-size: 5em;
+    font-size: 3em;
     font-weight: bold;
     color: rgb(248, 247, 247);
     transition: 3s ease;
@@ -117,7 +156,7 @@ a{
     background: rgb(0,212,255);
     background: linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 58%, rgba(2,0,36,1) 100%);
     color: #fff;
-    font-size: 2em;
+    font-size: 1em;
     cursor: pointer;
 }
 
@@ -129,7 +168,7 @@ a{
     background: rgb(0,212,255);
     background: linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 58%, rgba(2,0,36,1) 100%);
     color: #fff;
-    font-size: 2em;  
+    font-size: 1em;  
     cursor: pointer;
 }
 /*fin menu slide*/
@@ -165,7 +204,7 @@ a{
 .div4 {
     display: flex;
     align-items: center;
-    width: 700px;
+    width: 500px;
     border-radius: 20px;
     padding: 5px;
 }
@@ -195,7 +234,7 @@ a{
       
 .div5 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     
 }
@@ -220,12 +259,26 @@ a{
     font-family: 'Roboto', sans-serif;
 }
 
+.deconnexion {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
 .panier i {
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .compte i {
-  font-size: 60px;
+  font-size: 40px;
+}
+
+.deconnexion i {
+    font-size: 40px;
 }
 /*fien header*/
     </style>
