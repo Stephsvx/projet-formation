@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<?php include 'acceuil.php'; ?>
+<?php include 'acceuil2.php'; ?>
 
 </body>
 

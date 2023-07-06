@@ -68,7 +68,7 @@ form {
 }
 
 p {
-	color: black;
+	color: white;
 	font-weight: 500;
 	opacity: .7;
 	font-size: 1.4rem;
@@ -78,7 +78,7 @@ p {
 	
 a {
 	text-decoration: none;
-	color: black;
+	color: white;
 	font-size: 12px;
 }
   
@@ -129,8 +129,9 @@ input[type="button"] {
 }
 
   input[type="submit"] {
-  background-color: #adf0d1;
-    color: #00203f;
+	background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    color: white;
     border: 1px solid #adf0d1;
     font-size: 16px;
     font-weight: bold;

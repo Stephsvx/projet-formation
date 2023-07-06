@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +33,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="casque.php"><img src="image/casque route.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/casque route.png" width="100px" height="100pw" alt="">
                     <h2>Casques</h2>
                 </div>
               </div>
@@ -45,7 +43,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="gant.php"><img src="image/gant.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/gant.png" width="100px" height="100pw" alt="">
                     <h2>Gants</h2>
                 </div>
               </div>
@@ -55,7 +53,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="blouson.php"><img src="image/blouson.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/blouson.png" width="100px" height="100pw" alt="">
                     <h2>Blousons</h2>
                 </div>
               </div>
@@ -65,7 +63,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="pantalon.php"><img src="image/pantalons.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/pantalons.png" width="100px" height="100pw" alt="">
                     <h2>Pantalons</h2>
                 </div>
               </div>
@@ -80,7 +78,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="combinaison.php"><img src="image/combinaison.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/combinaison.png" width="100px" height="100pw" alt="">
                     <h2>Combies</h2>
                 </div>  
               </div>
@@ -90,7 +88,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="botte.php"><img src="image/botte.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/botte.png" width="100px" height="100pw" alt="">
                     <h2>Bottes</h2>
                 </div>
               </div>
@@ -100,7 +98,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="protection.php"><img src="image/protection.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/protection.png" width="100px" height="100pw" alt="">
                     <h2>Protection</h2>
                 </div>
               </div>
@@ -110,7 +108,7 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <a href="accessoire.php"><img src="image/accessoire.png" width="100px" height="100pw" alt=""></a>
+                    <img src="image/accessoire.png" width="100px" height="100pw" alt="">
                     <h2>Accessoires</h2>
                 </div> 
               </div>
