@@ -1,10 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Le Labomoto</title>
 </head>
 <body>
 
@@ -18,7 +20,7 @@
 
 
 <div class="parent3">
-    <div class="image"><img src="image/baniere.webp" alt=""> </div>
+    <div class="image"><img src="image/baniere.webp" alt="" width="1000px" > </div>
 </div>
 
 <div class="parent4">
@@ -33,7 +35,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/casque route.png" width="200px" height="200pw" alt="">
+                    <a href="casque.php"><img src="image/casque route.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Casques</h2>
                 </div>
               </div>
             </div>
@@ -42,7 +45,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/gant.png" width="200px" height="200pw" alt="">
+                    <a href="gant.php"><img src="image/gant.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Gants</h2>
                 </div>
               </div>
             </div>
@@ -51,7 +55,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/blouson.png" width="200px" height="200pw" alt="">
+                    <a href="blouson.php"><img src="image/blouson.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Blousons</h2>
                 </div>
               </div>
             </div>
@@ -60,7 +65,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/pantalons.png" width="200px" height="200pw" alt="">
+                    <a href="pantalon.php"><img src="image/pantalons.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Pantalons</h2>
                 </div>
               </div>
             </div>
@@ -74,7 +80,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/combinaison.png" width="200px" height="200pw" alt="">
+                    <a href="combinaison.php"><img src="image/combinaison.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Combies</h2>
                 </div>  
               </div>
             </div>
@@ -83,7 +90,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/botte.png" width="200px" height="200pw" alt="">
+                    <a href="botte.php"><img src="image/botte.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Bottes</h2>
                 </div>
               </div>
             </div>
@@ -92,7 +100,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/protection.png" width="200px" height="200pw" alt="">
+                    <a href="protection.php"><img src="image/protection.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Protection</h2>
                 </div>
               </div>
             </div>
@@ -101,7 +110,8 @@
             <div class="position">
               <div class="conteneur conteneur-1">
                 <div class="produits">
-                    <img src="image/accessoire.png" width="200px" height="200pw" alt="">
+                    <a href="accessoire.php"><img src="image/accessoire.png" width="100px" height="100pw" alt=""></a>
+                    <h2>Accessoires</h2>
                 </div> 
               </div>
             </div>
@@ -112,8 +122,8 @@
 
 <div class="parent6">
   <div class="marque"><p>Vos Marques préférées</p> </div>
-  <div class="container">
-    <img name="image" width="1024" height="1259">
+    <div class="container">
+        <img name="image" width="600" height="600">
     <script>
      var image = [];
         image[0] = "image/1.jpg";
@@ -136,7 +146,9 @@
         }
         window.onload = changerimage;
     </script>
+    </div>
 </div>
+
 
 </body>
 </html>
