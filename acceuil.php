@@ -293,10 +293,13 @@
     }
     
 .produits { grid-area: 1 / 1 / 3 / 7; }
+
+
 .card { grid-area: 1 / 2 / 2 / 6; 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 
 }
 
@@ -304,6 +307,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .card1{

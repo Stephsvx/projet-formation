@@ -49,10 +49,11 @@
 .logo2 { grid-area: 1 / 3 / 2 / 4; }
 
 .footer{
-    height: 200px;
-    background: rgb(0,212,255);
-    background: linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 58%, rgba(2,0,36,1) 100%);
     display: flex;
+    height: 300px;
+    background-image: url(image/fond2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     flex-wrap: wrap;
 }
 

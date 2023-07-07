@@ -190,9 +190,11 @@ a{
 .div5 { grid-area: 1 / 6 / 2 / 7; }
 
 .div1 {
-    height: 200px;
-    background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    display: flex;
+    height: 300px;
+    background-image: url(image/fond1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .div2 {
