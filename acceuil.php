@@ -12,8 +12,8 @@
 
 <div class="parent2">
     <div class="titre">
-        <h1 id="titreH1">Chez Labomoto</h1><br/>
-        <p id="paragraphe">Il y a tout pour vous et votre moto</p>
+        <h1 id="titreH1">Le Labomoto</h1><br/>
+        <p id="paragraphe">Tout pour vous et votre moto</p>
     </div>
 </div>
 
