@@ -43,7 +43,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
             if (isset($_POST['deco'])) {
             session_unset();
             session_destroy();
-            header("location: acceuil-connexion.php");
+            header("location: index.php");
             exit();
             }
         ?>
