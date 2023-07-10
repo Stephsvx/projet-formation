@@ -1,3 +1,5 @@
+
+
 <?php include 'header-clients.php'; ?>
 
 <!DOCTYPE html>
@@ -13,7 +15,7 @@
 <div class="parent16">
 <div class="choix"> </div>
 <div class="photo"> <img src="image/casque1.jpg" alt="photo du casque dester" width="500px" height="500px" ></div>
-<div class="description"><h2>CASQUE DEXTER PROTON NEGAN - NOIR / GRIS</h2><br/><p>71.90€</p><br/><button class="b3">Ajoutez au panier</button> </div>
+<div class="description"><h2 class="nom" >CASQUE DEXTER PROTON NEGAN - NOIR / GRIS</h2><br/><p class="prix" >71.90€</p><br/><button class="b3">Ajoutez au panier</button><button class="b3">Boutique</button></div>
 </div>
 </body>
 
@@ -74,7 +76,7 @@ grid-row-gap: 0px;
     color: red;
 }
 
-.b3{
+.b3 {
     border: solid 2px white;
     border-radius: 30px;
     padding: 10px;

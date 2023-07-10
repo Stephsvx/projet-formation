@@ -1,7 +1,4 @@
-<?php
-session_start();
-$prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +33,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
           
         <button class="compte">
             <i class="fas fa-user"></i>
-            <?php echo $prenom; ?>
+            Compte
         </button>
 
         <?php 
@@ -249,6 +246,20 @@ a{
   color: white;
   font-size: 15px;
   font-family: 'Roboto', sans-serif;
+}
+
+span {
+    position: absolute;
+    background: rgb(0,212,255);
+    background: linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 58%, rgba(2,0,36,1) 100%);
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
 }
 
 .panier {

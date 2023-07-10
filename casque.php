@@ -1,3 +1,7 @@
+<?php 
+ session_start() ;
+?>
+
 <?php include 'header-clients.php'; ?>
 
 <!DOCTYPE html>
@@ -8,88 +12,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Labomoto</title>
 </head>
-<body>
+<body1>
 
-<div class="parent13">
+<div class="parent14">
 <div class="casque"> </div>
 <div class="casqueh2"><h2>Tous nos casques</h2><br/>
 <p>Retrouvez l'intégralité des casques au même endroit, avec tous les types : casque intégral, casque modulable, casque jet, casque cross, casque trail. Bien entendu, toutes les marques sont au rendez-vous : SHARK, HJC, DEXTER, SCORPION EXO, SHOEI, ROOF, NOLAN, X-LITE, FOX, AIROH, ALPINESTARS, NEXX, etc...</p>
 </div>
-</div>
-
-<div class="parent14">
 <div class="cardcasque"> 
+<section class="products_list">
+        <?php 
+        //inclure la page de connexion
+        include_once "base-de-donnee.php";
+        //afficher la liste des produits
+         $req = mysqli_query($con, "SELECT * FROM produits");
+         while($row = mysqli_fetch_assoc($req)){ 
+        ?>
+        <form action="" class="product">
+            <div class="image_product">
+                <img src="image/<?=$row['photo']?>">
+            </div>
+            <div class="content">
+                <h4 class="nom"><?=$row['nom']?></h4>
+                <h2 class="prix"><?=$row['prix']?>€</h2>
+                <a href="ajouter-panier.php?id=<?=$row['id']?>" class="id_product">Ajouter au panier</a>
+            </div>
+        </form>
 
-<div class="card1"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="choix-casque.php"><img src="image/casque1.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Dexter</h2><br/>71.90€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card2"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/casque2.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Dexter</h2><br/>67.40€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card3"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/casque3.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Dexter</h2><br/>84.90€
-                </div>
-              </div>
-            </div>
-          </div>
+        <?php } ?>
+       
+    </section>
 </div>
 </div>
 
-<div class="parent15">
-<div class="cardcasque2"> 
-
-<div class="card4"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/casque4.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Scorpion exo</h2><br/>102.68€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card5"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/casque5.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Dexter</h2><br/>84.90€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card6"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/casque6.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Dexter</h2><br/>89.90€
-                </div>
-              </div>
-            </div>
-          </div>
-</div>
-</div>
-
-</body>
+</body1>
 
 <?php include 'footer.php'; ?>
 
@@ -106,16 +62,13 @@
     text-decoration: none;
 }
 
-.parent13 {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: 1fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
+body1 {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    justify-content: space-between;
+    /*background-color: #04202e;*/
 }
-
-.casque { grid-area: 1 / 1 / 2 / 6; }
-.casqueh2 { grid-area: 1 / 2 / 2 / 5; }
 
 .casqueh2 {
     text-align: center;
@@ -136,212 +89,64 @@ grid-row-gap: 0px;
     font-family: 'Roboto', sans-serif;
 }
 
-.parent14 {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: 1fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
+.products_list {
+    margin: 100px auto;
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
+    grid-gap: 25px;
 }
 
-.cardcasque { grid-area: 1 / 1 / 2 / 6; }
-
-.cardcasque {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card1{
-    max-width: 1100px;
-    margin: 0 auto;
+.content {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    height: fit-content;
     text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
+}
+
+.product {
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: 0.5s;
+    flex-direction: row;
+}
+.product:hover {
+    transform: scale(1.1);
+}
+.image_product {
+    height: 200px;
+    width: 100%;
     display: flex;
     align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
+    justify-content: center;
+}
+.image_product img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
     padding: 20px;
-    /*border: 2px solid rgb(8, 158, 227);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
+}
 
-  .card2{
-    max-width: 1100px;
-    margin: 0 auto;
+.prix {
+    margin: 15px 0;
+    font-weight: 20px;
+    color: #37a6ff;
+}
+
+.id_product {
     text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
-    display: flex;
-    align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-   /* border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
-
-.card3{
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-}
-  
-.position{
-    display: flex;
-    align-items: center;
-}
-
-.conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-    /*border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-}
-  
-.conteneur > *{
-    flex: 1 1 100%;
-}
-
-.parent15 {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: 1fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-}
-
-.cardcasque2 { grid-area: 1 / 1 / 2 / 6; }
-
-.cardcasque2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card4 {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
-    display: flex;
-    align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-    /*border: 2px solid rgb(8, 158, 227);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
-
-  .card5 {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
-    display: flex;
-    align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-   /* border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
-
-.card6 {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-}
-  
-.position{
-    display: flex;
-    align-items: center;
-}
-
-.conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-    /*border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-}
-  
-.conteneur > *{
-    flex: 1 1 100%;
+    text-decoration: 0;
+    background: rgb(0,212,255);
+    background: linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 58%, rgba(2,0,36,1) 100%);
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 10px  10%;
+    border-radius: 6px;
+    font-size: 10px;
 }
 
 </style>
