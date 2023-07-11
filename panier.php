@@ -25,7 +25,7 @@
 
 <div class="parent33">
     <div class="tableau"> 
-    <a href="acceuil-clients.php" class="link">Boutique</a>
+    
     <section>
         <table>
             <tr>
@@ -35,6 +35,7 @@
                 <th>Quantité</th>
                 <th>Action</th>
             </tr>
+            <a href="acceuil-clients.php" class="link">Boutique</a>
             <?php 
               $total = 0 ;
               // liste des produits
@@ -103,11 +104,14 @@ grid-row-gap: 0px;
     width: fit-content;
     position: relative;
     text-decoration: 0;
-    background-color: #37a6ff;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     color: #fff;
     padding: 10px 25px;
     border-radius: 6px;
     font-size: 14px;
+    justify-content: center;
+    align-items: center;
 }
 
 .tableau {
@@ -141,7 +145,7 @@ th {
 td {
     border-top: 0.5px solid #999;
     text-align: center;
-    color: #37a6ff;
+    color: red;
 }
 tr {
     border-bottom: 0.5px solid #999;
@@ -151,7 +155,7 @@ tr {
     border: 0;
     float: right;
     font-weight: 500;
-    color: #37a6ff;
+    color: red;
     padding: 10px;
 }
 
