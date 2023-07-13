@@ -63,6 +63,7 @@
     <a href="botte.php" class="navlink">Bottes</a>
     <a href="protection.php" class="navlink">Protections</a>
     <a href="accessoire.php" class="navlink">Accessoires</a>
+    <a href="acceuil-clients.php" class="navlink">Acceuil</a>
 </nav>
 
 </body>
