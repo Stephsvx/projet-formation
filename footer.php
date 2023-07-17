@@ -65,6 +65,11 @@
     color: white;
 }
 
+.mention a {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
 .contact {
     display: flex;
     justify-content: center;

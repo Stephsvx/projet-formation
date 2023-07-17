@@ -1,5 +1,43 @@
 <?php include 'header-clients.php'; ?>
 
+<?php
+//inclure la page de connexion
+ include_once "base-de-donnee.php";
+ //verifier si une session existe
+ if(!isset($_SESSION)){
+    //si non demarer la session
+   // session_start();
+ }
+ //creer la session
+ if(!isset($_SESSION['panier'])){
+    //s'il nexiste pas une session on créer une et on mets un tableau a l'intérieur 
+    $_SESSION['panier'] = array();
+ }
+ //récupération de l'id dans le lien
+  if(isset($_GET['id'])){//si un id a été envoyé alors :
+    $id = $_GET['id'] ;
+    //verifier grace a l'id si le produit existe dans la base de  données
+    $produit = mysqli_query($con ,"SELECT * FROM produits3 WHERE id = $id") ;
+    if(empty(mysqli_fetch_assoc($produit))){
+        //si ce produit n'existe pas
+        die("Ce produit n'existe pas");
+    }
+    //ajouter le produit dans le panier ( Le tableau)
+
+    if(isset($_SESSION['panier'][$id])){// si le produit est déjà dans le panier
+        $_SESSION['panier'][$id]++; //Représente la quantité 
+    }else {
+        //si non on ajoute le produit
+        $_SESSION['panier'][$id]= 1 ;
+    }
+
+   //redirection vers la page index.php
+   header("location: panier.php");
+
+
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,84 +48,37 @@
 </head>
 <body>
 
-<div class="parent21">
-    <div class="blouson"> </div>
+<div class="parent22">
+<div class="blouson"> </div>
     <div class="blousonh2"><h2>Tous nos blousons et vestes</h2><br/>
         <p>Retrouvez l'intégralité de blousons et vestes au même endroit. Blousons moto en textile, en cuir, gilet airbag, blouson airbag, veste airbag... et toutes les marques sont présentes : ALPINESTARS, DXR, BERING, IXON, REV'IT, KLIM, DAINESE, RICHA, RST, HELSTONS, FURYGAN et bien d'autres...</p>
     </div>
-</div>
-
-<div class="parent22">
 <div class="cardblouson"> 
+<section class="products_list">
+        <?php 
+        //inclure la page de connexion
+        include_once "base-de-donnee.php";
+        //afficher la liste des produits
+         $req = mysqli_query($con, "SELECT * FROM produits3");
+         while($row = mysqli_fetch_assoc($req)){ 
+        ?>
+        <form action="" class="product">
+            <div class="image_product">
+                <img src="image/<?=$row['photo']?>">
+            </div>
+            <div class="content">
+                <h4 class="nom"><?=$row['nom']?></h4>
+                <h2 class="prix"><?=$row['prix']?>€</h2>
+                <a href="?id=<?=$row['id']?>" class="id_product">Ajouter au panier</a>
+            </div>
+        </form>
 
-<div class="card1"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="choix-blouson.php"><img src="image/blouson1.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Bering</h2><br/>199€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card2"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/blouson2.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>DXR</h2><br/>99.90€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card3"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/blouson3.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>DXR</h2><br/>84.40€
-                </div>
-              </div>
-            </div>
-          </div>
+        <?php } ?>
+       
+    </section>         
 </div>
 </div>
 
-<div class="parent23">
-<div class="cardblouson2"> 
-
-<div class="card1"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/blouson4.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Bering</h2><br/>169€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card2"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/blouson5.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Helstons</h2><br/>199.90€
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card3"> 
-            <div class="position">
-              <div class="conteneur conteneur-1">
-                <div class="produits">
-                    <a href="#"><img src="image/blouson6.jpg" width="200px" height="200pw" alt=""></a>
-                    <h2>Ixon</h2><br/>109€
-                </div>
-              </div>
-            </div>
-          </div>
-</div>
-</div>
 </body>
 
 <?php include 'footer.php'; ?>
@@ -105,16 +96,13 @@
     text-decoration: none;
 }
 
-.parent21 {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: 1fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
+body1 {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    justify-content: space-between;
+    /*background-color: #04202e;*/
 }
-
-.blouson { grid-area: 1 / 1 / 2 / 6; }
-.blousonh2 { grid-area: 1 / 2 / 2 / 5; }
 
 .blousonh2 {
     text-align: center;
@@ -135,211 +123,64 @@ grid-row-gap: 0px;
     font-family: 'Roboto', sans-serif;
 }
 
-.parent22 {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: 1fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
+.products_list {
+    margin: 100px auto;
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
+    grid-gap: 25px;
 }
 
-.cardblouson { grid-area: 1 / 1 / 2 / 6; }
-
-.cardblouson {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card1{
-    max-width: 1100px;
-    margin: 0 auto;
+.content {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    height: fit-content;
     text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
+}
+
+.product {
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: 0.5s;
+    flex-direction: row;
+}
+.product:hover {
+    transform: scale(1.1);
+}
+.image_product {
+    height: 200px;
+    width: 100%;
     display: flex;
     align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
+    justify-content: center;
+}
+.image_product img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
     padding: 20px;
-    /*border: 2px solid rgb(8, 158, 227);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
+}
 
-  .card2{
-    max-width: 1100px;
-    margin: 0 auto;
+.prix {
+    margin: 15px 0;
+    font-weight: 20px;
+    color: #37a6ff;
+}
+
+.id_product {
     text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
-    display: flex;
-    align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-   /* border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
-
-.card3{
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-}
-  
-.position{
-    display: flex;
-    align-items: center;
+    text-decoration: 0;
+    background: rgb(0,212,255);
+    background: linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 58%, rgba(2,0,36,1) 100%);
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 10px  10%;
+    border-radius: 6px;
+    font-size: 10px;
 }
 
-.conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-    /*border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-}
-  
-.conteneur > *{
-    flex: 1 1 100%;
-}
-
-.parent23 {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: 1fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-}
-
-.cardblouson2 { grid-area: 1 / 1 / 2 / 6; }
-
-.cardblouson2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card4 {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
-    display: flex;
-    align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-    /*border: 2px solid rgb(8, 158, 227);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
-
-  .card5 {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-  }
-  
-  .position{
-    display: flex;
-    align-items: center;
-  }
-  .conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-   /* border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-  }
-  
-  .conteneur > *{
-    flex: 1 1 100%;
-  }
-
-.card6 {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    
-}
-  
-.position{
-    display: flex;
-    align-items: center;
-}
-
-.conteneur{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 20px;
-    padding: 20px;
-    /*border: 2px solid rgb(205, 227, 8);
-    border-radius: 4px;
-    transition: all .3s ease;
-    border-radius: 5%;
-    box-shadow: black 2px 2px 3px;*/
-}
-  
-.conteneur > *{
-    flex: 1 1 100%;
-}
 </style>
